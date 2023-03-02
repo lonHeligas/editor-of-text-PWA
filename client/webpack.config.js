@@ -16,15 +16,15 @@ module.exports = () => {
     },
     
     plugins: [ 
-      new HtmlWebpackPlugin = {
+      new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'J.A.T.E' 
-      },
-      new InjectManifest = {
+        title: 'J.A.T.E.' 
+      }),
+      new InjectManifest({
         swsrc: './src-sw.js',
         swDest: 'src-sw.js'
-      },
-      new WebpackPwaManifest = {
+      }),
+      new WebpackPwaManifest({
         fingerprints: 'false',
         inject: 'true',
         name: 'Just Another Text Editor',
@@ -41,7 +41,7 @@ module.exports = () => {
             destination: path.join('assets', 'icons'),
           }
         ]
-      }
+      })
     
 
     ],
