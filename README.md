@@ -2,7 +2,7 @@
 
 [This is the link to the repository for this challenge](https://github.com/lonHeligas/editor-of-text-PWA)
 
-I currently do not have a link to Heroku as I cannot get the full application to work (yet.)
+[This is the link to the live version on Heroku](https://editor-of-text-pwa-jate.herokuapp.com/)
 
 ## Your Task
 
@@ -17,4 +17,6 @@ You will deploy this full-stack application to Heroku using the [Heroku Deployme
 ## my challenges
 
 As it's not deploying fully, my challenge is discerning what the error is. It currently cannot find the proper path to deply the distributible version, I think. I'll re-submit it once I figure that out.
+
+However, returning to this (and watching the zoom lecture again) helped me immensely, as I was able to get it working fully.
 
