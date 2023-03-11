@@ -14,24 +14,26 @@ module.exports = () => {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
-    
-    plugins: [ 
+
+    plugins: [
+      
       new HtmlWebpackPlugin({
-        template: './index.html',        
-        title: 'J.A.T.E.' 
+        template: './index.html',
+        title: 'J.A.T.E'
       }),
+
       new InjectManifest({
-        swsrc: './src-sw.js',
+        swSrc: './src-sw.js',
         swDest: 'src-sw.js'
       }),
+
       new WebpackPwaManifest({
-        fingerprints: 'false',
-        inject: 'true',
+        fingerprints: false,
+        inject: true,
         name: 'Just Another Text Editor',
         short_name: 'J.A.T.E',
-        description: 'This app creates a text editor for you to use offline.',
+        description: 'This app will create a text editor for you. Isn\'t that great?',
         background_color: '#225ca3',
-        theme_color: '#225ca3',
         start_url: '/',
         publicPath: '/',
         icons: [
@@ -39,14 +41,14 @@ module.exports = () => {
             src: path.resolve('src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
-          }
+          },
         ]
-      })
-    
+      })     
+
 
     ],
 
-    module: {
+    module: {      
       rules: [
         {
           test: /\.css$/i,
@@ -55,7 +57,6 @@ module.exports = () => {
         {
           test: /\.m?js$/,
           exclude: /node_modules/,
-          // We use babel-loader in order to use ES6.
           use: {
             loader: 'babel-loader',
             options: {

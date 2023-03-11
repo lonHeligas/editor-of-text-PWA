@@ -12,33 +12,26 @@ const initdb = async () =>
     },
   });
 
-export const putDb = async (content) => {
-  
-  const openVar = await openDB('jateDB', 1);
-  
-  const transactionVar = jateDb.transaction('jateDB', 'readwrite');
-  
-  const storeVar = tx.objectStore('jateDB');
-  
-  const request = store.put({ id: 1, value: content });
 
+export const putDb = async (content) => {  
+  const databaseVar = await openDB('jateDb', 1);  
+  const dbTransaction = jateDb.transaction('jateDb', 'readwrite');
+  const storeVar = tx.objectStore('jateDb');  
+  const request = store.put({ id: 1, value: content });
   const result = await request;
   console.log('🚀 - data saved to the database', result.value);
 };
 
-export const getDb = async () => {
-  const openVar = await openDB('jateDB', 1);
-  
-  const transactionVar = jateDb.transaction('jateDB', 'readonly');
-  
-  const storeVar = tx.objectStore('jateDB');
 
+export const getDb = async () => {    
+  const databaseVar = await openDB('jateDb', 1);
+  const dbTransaction = jateDb.transaction('jateDb', 'readonly');
+  const storeVar = tx.objectStore('jateDb');
   const request = store.get(1);
   const result = await request;
   result
     ? console.log('🚀 - data retrieved from the database', result.value)
-    : console.log('🚀 - data not found in the database');
- 
+    : console.log('🚀 - data not found in the database');  
   return result?.value;
 };
 

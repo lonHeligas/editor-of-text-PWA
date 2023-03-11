@@ -7,7 +7,7 @@ const { precacheAndRoute } = require('workbox-precaching/precacheAndRoute');
 
 precacheAndRoute(self.__WB_MANIFEST);
 
-// Set up page cache
+
 const pageCache = new CacheFirst({
   cacheName: 'page-cache',
   plugins: [
@@ -27,10 +27,10 @@ warmStrategyCache({
 
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
-const pathRoutes = [ 'style', 'script', 'worker']
+const paths = [ 'style', 'script', 'worker'];
 
-registerRoute( ({ request }) => pathRoutes.includes(destination),
-  new StaleWhileRevalidate ({
+registerRoute( ({ request }) => paths.includes(request.destination),
+  new StaleWhileRevalidate({
     cacheName: 'asset-cache',
     plugins: [
       new CacheableResponsePlugin({
