@@ -33,8 +33,35 @@ module.exports = () => {
 
       new PLUGIN_NAME_HERE({
         // object keys and values go here
+      }),*/
+      new HtmlwebpackPlugin({
+        template: './index.html',
+        title: 'J.A.T.E'
       }),
 
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js'
+      }),
+
+      new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
+        name: 'Just Another Text Editor',
+        short_name: 'J.A.T.E',
+        description: 'This app will create a text editor for you. Isn\'t that great?',
+        background_color: '#225ca3',
+        start_url: '/',
+        publicPath: '/',
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
+          },
+        ]
+      })
+      /*
       So, below, we will be configuring HtmlWebpackPlugin, InjectManifest, 
       and WebpackPwaManifest.
 
